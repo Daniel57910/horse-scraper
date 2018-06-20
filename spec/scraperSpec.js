@@ -7,11 +7,19 @@ describe("The Basic Web Scraper", function() {
       testScraper = new Scraper();
       testString = "<h1>Hello World</h1>";
       formattedString = "Hello World";
+      testScraper.addData(testString);
     });
     it("adds the unformatted HTML as an argument", function() {
-      testScraper.addData(testString);
       expect(testScraper.unformattedString).toEqual(testString);
+    });
+    it("calls the formatted string function and formats the string", function() {
+      var array;
+      spyOn(testScraper, "formatString").and.callFake(function() {
+        
+      });
+      console.log(testScraper.formatString());
+    });
+
     });
     
   });
-})

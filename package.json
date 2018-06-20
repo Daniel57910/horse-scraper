@@ -20,6 +20,8 @@
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
-    "jasmine": "^3.1.0"
+    "jasmine": "^3.1.0",
+    "mongodb": "^3.0.10",
+    "mongoose": "^5.1.6"
   }
 }
