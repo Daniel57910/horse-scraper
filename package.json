@@ -1,0 +1,23 @@
+{
+  "name": "horse_scraper",
+  "version": "1.0.0",
+  "description": "product will eventually scrape odds for horse betting. MVP simple web scraper for HTML with no JS.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel57910/horse-scraper.git"
+  },
+  "author": "Daniel Miller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel57910/horse-scraper/issues"
+  },
+  "homepage": "https://github.com/Daniel57910/horse-scraper#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jasmine": "^3.1.0"
+  }
+}
