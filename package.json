@@ -2,7 +2,7 @@
   "name": "horse_scraper",
   "version": "1.0.0",
   "description": "product will eventually scrape odds for horse betting. MVP simple web scraper for HTML with no JS.",
-  "main": "scraper.js",
+  "main": "app.js",
   "scripts": {
     "test": "jasmine"
   },
