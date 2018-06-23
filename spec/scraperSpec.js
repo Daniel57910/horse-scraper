@@ -13,9 +13,8 @@ describe("The Basic Web Scraper", function() {
       expect(testScraper.unformattedString).toEqual(testString);
     });
     it("calls the formatted string function and formats the string", function() {
-      var array;
       spyOn(testScraper, "formatString").and.callFake(function() {
-        
+        return this.unformattedString.substr("<h1>");
       });
       console.log(testScraper.formatString());
     });
