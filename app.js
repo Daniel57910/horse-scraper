@@ -9,7 +9,7 @@ axios.get('http://localhost:9000/')
   .then((response) => {
     if (response.status === 200) {
       let a = cheerio.load(response.data);
-      a('h2').each(function(index, el) {
+      a('li').each(function(index, el) {
         console.log("ELEMENT IS");
         console.log(el.children[0].data);
       });
