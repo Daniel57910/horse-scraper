@@ -1,5 +1,4 @@
 const Scraper = require("../src/scraper");
-console.log(Scraper);
 
 describe("The Basic Web Scraper", function() {
   describe("adding new html to the web scraper", function() {
@@ -16,7 +15,24 @@ describe("The Basic Web Scraper", function() {
       testScraper.formatString();
       expect(testScraper.formattedString).toEqual(formattedString);
     });
-  });   
+  }); 
+});
+
+describe("Selecting HTML Based On The Data Type", function() {
+  beforeEach(function() {
+    testScraper = new Scraper();
+    testString;
+    for (i = 0; i < 10; i++) {
+      console.log(i);
+      testString += "<li>Hello " + i + "</li>";
+    }
+    console.log(testString);
+    //testScraper.addData(testString);
+    //testScraper.formatString();
+  });
+  it("selects the HTML type based on the argument sent to the function", function() {
+   console.log(testString);
+  });
 
 });
 
