@@ -15,14 +15,14 @@ Scraper.prototype.formatString = function() {
 }
 
 Scraper.prototype._loadHTML = function() {
-  return cheerio.load(this.unformattedString).text();
+  return cheerio.load(this.unformattedString);
 }
 
 Scraper.prototype.selectHTML = function(data) {
-  /*this.formattedString(data).each(function(el, index) {
-    this.savedString.push(el);
-  });*/
-  console.log(this.formattedString);
+  this.formattedString(data).each((i, el) => {
+    this.savedString.push(el.children[0].data);
+  });  
 }
+
 
 module.exports = Scraper;
