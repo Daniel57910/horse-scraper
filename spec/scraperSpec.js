@@ -12,13 +12,11 @@ describe("The Basic Web Scraper", function() {
     it("adds the unformatted HTML as an argument", function() {
       expect(testScraper.unformattedString).toEqual(testString);
     });
-    it("calls the formatted string function and formats the string", function() {
-      spyOn(testScraper, "formatString").and.callFake(function() {
-        return this.unformattedString.substr("<h1>");
-      });
-      console.log(testScraper.formatString());
+    it("parses the string data for the html", function() {
+      testScraper.formatString();
+      expect(testScraper.formattedString).toEqual(formattedString);
     });
+  });   
 
-    });
-    
-  });
+});
+

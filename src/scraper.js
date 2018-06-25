@@ -1,8 +1,8 @@
-let cheerio = require('cheerio');
+const cheerio = require('cheerio');
 
 function Scraper() {
   this.unformattedString;
-  this.cheerio = require('cheerio');
+  this.formattedString;
 }
 
 Scraper.prototype.addData = function(data) {
@@ -10,7 +10,7 @@ Scraper.prototype.addData = function(data) {
 }
 
 Scraper.prototype.formatString = function() {
-  return this.unformattedString.text();
+  this.formattedString = cheerio.load(this.unformattedString).text();
 }
 
 module.exports = Scraper;
