@@ -20,8 +20,11 @@ Scraper.prototype._loadHTML = function() {
 
 Scraper.prototype.selectHTML = function(data) {
   this.formattedString(data).each((i, el) => {
+    console.log("EL IS");
+    console.log(el.children[0].data);
     this.savedString.push(el.children[0].data);
-  });  
+  });
+  
 }
 
 

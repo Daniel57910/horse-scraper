@@ -1,23 +1,27 @@
-let axios = require('axios');
-let cheerio = require('cheerio');
-let fs = require('fs');
-var mongoose = require('mongoose');
-var siteSchema = require("./models/siteSchema");
+const axios = require('axios');
+const cheerio = require('cheerio');
+const fs = require('fs');
+const mongoose = require('mongoose');
+const scraper = require('./src/scraper.js');
+const siteSchema = require("./models/siteSchema");
 //mongoose.connect('mongodb://localhost:27017/scraper_v1');
 
-let data;
+var webScraper = new scraper();
+console.log(webScraper);
+
 axios.get('http://localhost:9000/')
   .then((response) => {
-    if (response.status === 200) {
-      data = cheerio.load(response.data);
-    }
+    webScraper.addData(response.data);
+    console.log(webScraper.unformattedString);
+    //console.log(webScraper.unformattedString);
   })
   .then(() => {
-    data('li').each(function (index, el) {
-    console.log("ELEMENT IS");
-    console.log(el.children[0].data);
+    webScraper.formatString();
+  }) 
+  .then(() => {
+    webScraper.selectHTML("li");
+    console.log(webScraper.savedString);
   })
-});
   
 
   
