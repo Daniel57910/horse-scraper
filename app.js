@@ -3,19 +3,25 @@ let cheerio = require('cheerio');
 let fs = require('fs');
 var mongoose = require('mongoose');
 var siteSchema = require("./models/siteSchema");
-mongoose.connect('mongodb://localhost:27017/scraper_v1');
+//mongoose.connect('mongodb://localhost:27017/scraper_v1');
 
+let data;
 axios.get('http://localhost:9000/')
   .then((response) => {
     if (response.status === 200) {
-      let a = cheerio.load(response.data);
-      a('li').each(function(index, el) {
-        console.log("ELEMENT IS");
-        console.log(el.children[0].data);
-      });
+      data = cheerio.load(response.data);
     }
-  }
-);
+  })
+  .then(() => {
+    data('li').each(function (index, el) {
+    console.log("ELEMENT IS");
+    console.log(el.children[0].data);
+  })
+});
+  
+
+  
+
 
 /*savedData = new siteSchema({
         siteData: a.text()
