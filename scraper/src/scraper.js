@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const htmlSelector = require('./htmlSelector.js');
+var htmlSelector = require('./htmlSelector.js');
 
 function Scraper() {
   this.unformattedString;
@@ -20,11 +20,7 @@ Scraper.prototype._loadHTML = function() {
 }
 
 Scraper.prototype.selectHTML = function(data) {
-  this.formattedString(data).each((i, el) => {
-    console.log("EL IS");
-    console.log(el.children[0].data);
-    this.savedString.push(el.children[0].data);
-  });
+  htmlParser = new htmlSelector();
+  this.savedString = htmlParser.selectHTML(this.formattedString, data);
 }
-
 module.exports = Scraper;
