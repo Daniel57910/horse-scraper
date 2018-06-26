@@ -1,4 +1,5 @@
 const cheerio = require('cheerio');
+const htmlSelector = require('./htmlSelector.js');
 
 function Scraper() {
   this.unformattedString;
