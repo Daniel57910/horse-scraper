@@ -1,6 +1,5 @@
 const Scraper = require("../src/scraper");
 
-
 describe("The Basic Web Scraper", function() {
   describe("adding new html to the web scraper", function() {
     beforeEach(function () {
