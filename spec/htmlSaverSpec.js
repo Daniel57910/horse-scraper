@@ -6,7 +6,7 @@ describe("Function for saving data to the database", function() {
       testSaver = new dataSaver();
     });
     it("converts the array into a JSON string & saves it to the database", function() {
-      spyOn(JSON, "stringify").and.callThrough();
+      spyOn(JSON, "stringify");
       spyOn(testSaver, "_saveStringifiedData");
       testSaver.saveToDatabase(testData);
       expect(JSON.stringify).toHaveBeenCalledWith(testData);
