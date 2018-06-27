@@ -5,7 +5,7 @@ function htmlSaver() {
 }
 
 htmlSaver.prototype.saveToDatabase = function(parsedDataArray) {
-  console.log("SAVE ME TO DATABASE");
+  this.stringified = JSON.stringify(parsedDataArray);
 } 
 
 module.exports = htmlSaver;
