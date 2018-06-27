@@ -5,10 +5,12 @@ describe("Function for saving data to the database", function() {
       testData = [1, 2, 3, 4, 5, 6];
       testSaver = new dataSaver();
     });
-    it("converts the array into a JSON string", function() {
+    it("converts the array into a JSON string & saves it to the database", function() {
       spyOn(JSON, "stringify").and.callThrough();
+      spyOn(testSaver, "_saveStringifiedData");
       testSaver.saveToDatabase(testData);
       expect(JSON.stringify).toHaveBeenCalledWith(testData);
+      expect(testSaver._saveStringifiedData).toHaveBeenCalled();
     });
   });
-});
+}); 
