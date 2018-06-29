@@ -2,31 +2,34 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const scraper = require('./src/scraper.js');
 const htmlSaver = require('./src/htmlSaver.js');
+
 var webScraper = new scraper();
 var databaseSaver = new htmlSaver();
-mongoose.connect("mongodb://localhost:27017/scraper_v1");
+var env = process.env.NODE_ENV || "test";
 
-console.log("RUNNING ON DOCKER");
+mongoose.connect(databaseSetup(env));
 
-axios.get('https://cryptic-spire-74200.herokuapp.com/')
-  .then((response) => {
+axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hunt/summer-cup/winner')
+  .then((response)=> {
     webScraper.addData(response.data);
   })
   .then(() => {
     webScraper.formatString();
-  }) 
-  .then(() => {
-    webScraper.selectHTML("li");
   })
-  .then(()=> {
+  .then(() => {
+    webScraper.selectHTML(".top-row")
+  })
+  .then(() => {
+    console.log(webScraper.savedString);
     databaseSaver.saveToDatabase(webScraper.savedString);
   })
-/*
-  axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hunt/summer-cup/winner')
-  .then((response)=> {
-    console.log(response.data);
-  })
-*/
+
+  function databaseSetup(env) {
+    console.log(env);
+    return env === 'test' ? "mongodb://localhost:27017/scraper_v1_test" : "mongodb://localhost:27017/scraper_v1";
+  }
+  
+
   
 
 
