@@ -17,7 +17,7 @@ axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hu
     webScraper.formatString();
   })
   .then(() => {
-    webScraper.selectHTML(".top-row")
+    webScraper.selectHTML(".top-row", "a");
   })
   .then(() => {
     console.log(webScraper.savedString);

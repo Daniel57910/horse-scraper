@@ -19,9 +19,9 @@ Scraper.prototype._loadHTML = function() {
   return cheerio.load(this.unformattedString);
 }
 
-Scraper.prototype.selectHTML = function(data) {
+Scraper.prototype.selectHTML = function(data, type) {
   htmlParser = new htmlSelector();
-  this.savedString = htmlParser.selectHTML(this.formattedString, data);
+  this.savedString = htmlParser.selectHTML(this.formattedString, data, type);
 }
 
 module.exports = Scraper;

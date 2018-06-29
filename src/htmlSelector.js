@@ -3,9 +3,9 @@ function dataSelector() {
   this.savedData = [];
 }
 
-dataSelector.prototype.selectHTML = function(data, htmlType) {
+dataSelector.prototype.selectHTML = function(data, htmlClass, htmlTag) {
   "use strict";
-  this.savedString = data(".top-row").find("a");
+  this.savedString = data(htmlClass).find(htmlTag);
   for (let i = 0; i < this.savedString.length; i++) {
    this.savedData.push(this.savedString[i].children[0].data);
   }
