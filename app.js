@@ -9,28 +9,6 @@ var env = process.env.NODE_ENV || "test";
 
 mongoose.connect(databaseSetup(env));
 
-/*
-axios.get('https://cryptic-spire-74200.herokuapp.com/')
-  .then((response) => {
-    webScraper.addData(response.data);
-  })
-  .then(() => {
-    webScraper.formatString();
-  }) 
-  .then(() => {
-    webScraper.selectHTML("li");
-  })
-  .then(()=> {
-    databaseSaver.saveToDatabase(webScraper.savedString);
-  })
-*/
-
-function databaseSetup(env) {
-  console.log(env);
-  return env === 'test' ? "mongodb://localhost:27017/scraper_v1_test" : "mongodb://localhost:27017/scraper_v1";
-}
-
-
 axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hunt/summer-cup/winner')
   .then((response)=> {
     webScraper.addData(response.data);
@@ -43,7 +21,13 @@ axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hu
   })
   .then(() => {
     console.log(webScraper.savedString);
+    databaseSaver.saveToDatabase(webScraper.savedString);
   })
+
+  function databaseSetup(env) {
+    console.log(env);
+    return env === 'test' ? "mongodb://localhost:27017/scraper_v1_test" : "mongodb://localhost:27017/scraper_v1";
+  }
   
 
   
