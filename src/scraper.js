@@ -23,4 +23,5 @@ Scraper.prototype.selectHTML = function(data) {
   htmlParser = new htmlSelector();
   this.savedString = htmlParser.selectHTML(this.formattedString, data);
 }
+
 module.exports = Scraper;
