@@ -9,7 +9,7 @@ var env = process.env.NODE_ENV || "test";
 
 mongoose.connect(databaseSetup(env));
 
-axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hunt/summer-cup/winner')
+axios.get('https://www.oddschecker.com/grand-national/winner')
   .then((response)=> {
     webScraper.addData(response.data);
   })
