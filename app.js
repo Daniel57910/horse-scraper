@@ -9,7 +9,7 @@ var env = process.env.NODE_ENV || "test";
 
 mongoose.connect(databaseSetup(env));
 
-function getHorsesNames() {
+
   axios.get('https://www.oddschecker.com/grand-national/winner')
     .then((response)=> {
       webScraper.addData(response.data);
@@ -24,9 +24,13 @@ function getHorsesNames() {
       console.log(webScraper.savedString);
       databaseSaver.saveToDatabase(webScraper.savedString);
     })
-}
+    .then(() => {
+      webScraper.selectHTML(".diff-row", "p");
+      console.log("DATA IS NOW");
+      console.log(webScraper.savedString);
+    })
 
-getHorsesNames();
+
 
   function databaseSetup(env) {
     console.log(env);
