@@ -35,7 +35,6 @@ describe("Selecting HTML Based On The Data Type", function() {
     expect(testScraper.savedString.join().includes("IGNORE ME")).toBe(false);
   });
   it("selects the exact HTML that's specified in the function", function() {
-    testString += "<p>IGNORE ME</p>";
     testScraper.addData(testString);
     testScraper.formatString();
     testScraper.selectHTML(".find_me", "li");
