@@ -46,7 +46,7 @@ describe("Selecting HTML Based On The Data Type", function() {
     expect(testScraper.savedString.join()).toEqual(matchedString.slice(0, matchedString.length - 1)); 
   });
 
-  describe("Selecting numeric data that has HTML tag with whitespace", function() {
+  describe("Selecting numeric data that has multiple html classes", function() {
     beforeEach(function() {
       numericString = "<div class = find_me space>"
       for(i = 1; i <= 10; i++) {
