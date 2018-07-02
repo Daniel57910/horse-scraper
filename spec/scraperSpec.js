@@ -38,13 +38,28 @@ describe("Selecting HTML Based On The Data Type", function() {
     testScraper.addData(testString);
     testScraper.formatString();
     testScraper.selectHTML(".find_me", "li");
-    var matchedString;
+    var matchedString = "";
     for(i = 0; i < 10; i++) {
       matchedString += "Hello " + i + ",";
     }
-    matchedString = matchedString.replace(/undefined/, " ").trim();
-    expect(testScraper.savedString.join()).toEqual(matchedString.slice(0, matchedString.length - 1));
-    
+    matchedString = matchedString.trim();
+    expect(testScraper.savedString.join()).toEqual(matchedString.slice(0, matchedString.length - 1)); 
+  });
+
+  describe("Selecting numeric data that has HTML tag with whitespace", function() {
+    beforeEach(function() {
+      numericString = "<div class = find_me space>"
+      for(i = 1; i <= 10; i++) {
+        numericString+= ` <p>${i * i}</p>`;
+      }
+      numericString+= `</div>`;
+    });
+    it("selects the string data if the class has a name in it", function() {
+      testScraper.addData(numericString);
+      testScraper.formatString();
+      testScraper.selectHTML(".find_me", "p");
+      expect(testScraper.savedString.join()).toEqual("1,4,9,16,25,36,49,64,81,100")
+    });
   });
 
 });
