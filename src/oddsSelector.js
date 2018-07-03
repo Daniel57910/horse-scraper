@@ -9,7 +9,7 @@ oddsSelector.prototype.findOdds = function (data, htmlClass, htmlTag) {
   for (let i = 0; i < this.oddsData.length; i++) {
     getTheOdds(this.oddsData[i]);
   }
-  console.log(oddsArray);
+  return oddsArray;
 }
 
 
