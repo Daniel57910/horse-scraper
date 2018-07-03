@@ -1,6 +1,6 @@
 function oddsSelector() {
   this.oddsData = [];
-  
+
 }
 
 oddsSelector.prototype.findOdds = function (data, htmlClass, htmlTag) {
@@ -12,3 +12,5 @@ oddsSelector.prototype.findOdds = function (data, htmlClass, htmlTag) {
   console.log(this.sampleData);
   debugger;
 }
+
+module.exports = oddsSelector;
