@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "product will eventually scrape odds for horse betting. MVP simple web scraper for HTML with no JS.",
   "scripts": {
-    "test": "istanbul cover jasmine-node spec"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,6 @@
     "express": "^4.16.3",
     "istanbul": "^0.4.5",
     "jasmine": "^3.1.0",
-    "jasmine-node": "^1.15.0",
     "mongodb": "^3.0.10",
     "mongoose": "^5.1.6"
   }

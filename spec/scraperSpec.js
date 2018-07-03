@@ -30,6 +30,7 @@ describe("Selecting HTML Based On The Data Type", function() {
     testScraper.addData(testString);
     testScraper.formatString();
     testScraper.selectHTML(".find_me", "li");
+    testString = "";
   });
 
   it("selects the HTML type based on the argument sent to the function", function() {
