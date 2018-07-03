@@ -1,16 +1,24 @@
 function oddsSelector() {
   this.oddsData = [];
+  this.arrayOfOdds = [];
 
 }
 
 oddsSelector.prototype.findOdds = function (data, htmlClass, htmlTag) {
-  "use strict";
-  var fs = require('fs');
   console.log("ODDS FOR HORSES = ")
   this.oddsData = data(htmlClass);
-  console.log(this.oddsData[0]);
-  console.log(this.sampleData);
-  debugger;
+  for (let i = 0; i < this.oddsData.length; i++) {
+    getTheOdds(this.oddsData[i], this.arrayOfOdds);
+  }
+}
+
+
+function getTheOdds(element, oddsArray) {
+  currentData = [];
+  for (let i = 0; i < 23; i++) {
+    currentData.push(element.children[i].next.attribs["data-o"]);
+  }
+  oddsArray.push(currentData);
 }
 
 module.exports = oddsSelector;
