@@ -9,20 +9,27 @@ var env = process.env.NODE_ENV || "test";
 
 mongoose.connect(databaseSetup(env));
 
-axios.get('https://www.oddschecker.com/horse-racing/ante-post-racing/national-hunt/summer-cup/winner')
-  .then((response)=> {
-    webScraper.addData(response.data);
-  })
-  .then(() => {
-    webScraper.formatString();
-  })
-  .then(() => {
-    webScraper.selectHTML(".top-row", "a");
-  })
-  .then(() => {
-    console.log(webScraper.savedString);
-    databaseSaver.saveToDatabase(webScraper.savedString);
-  })
+
+  axios.get('https://www.oddschecker.com/grand-national/winner')
+    .then((response)=> {
+      webScraper.addData(response.data);
+    })
+    .then(() => {
+      webScraper.formatString();
+    })
+    .then(() => {
+      webScraper.selectHTML(".top-row", "a");
+    })
+    .then(() => {
+      console.log(webScraper.savedString);
+      //databaseSaver.saveToDatabase(webScraper.savedString);
+    })
+    .then(() => {
+      webScraper.findOdds(".diff-row", "p");
+      console.log(webScraper.allOdds)
+    })
+
+
 
   function databaseSetup(env) {
     console.log(env);

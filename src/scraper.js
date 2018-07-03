@@ -1,10 +1,14 @@
 const cheerio = require('cheerio');
-var htmlSelector = require('./htmlSelector.js');
+const htmlSelector = require('./htmlSelector.js');
+const oddsSelector = require('./oddsSelector.js'); 
+let htmlParser = new htmlSelector();
+let oddsParser = new oddsSelector();
 
 function Scraper() {
   this.unformattedString;
   this.formattedString;
   this.savedString = [];
+  this.allOdds = [];
 }
 
 Scraper.prototype.addData = function(data) {
@@ -20,8 +24,11 @@ Scraper.prototype._loadHTML = function() {
 }
 
 Scraper.prototype.selectHTML = function(data, type) {
-  htmlParser = new htmlSelector();
   this.savedString = htmlParser.selectHTML(this.formattedString, data, type);
+}
+
+Scraper.prototype.findOdds = function(data, type) {
+  this.allOdds = oddsParser.findOdds(this.formattedString, data, type);
 }
 
 module.exports = Scraper;
