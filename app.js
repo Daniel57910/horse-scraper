@@ -21,7 +21,7 @@ mongoose.connect(databaseSetup(env));
       webScraper.selectHTML(".top-row", "a");
     })
     .then(() => {
-      console.log(webScraper.savedString);
+      //console.log(webScraper.savedString);
       //databaseSaver.saveToDatabase(webScraper.savedString);
     })
     .then(() => {
