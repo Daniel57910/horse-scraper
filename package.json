@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "product will eventually scrape odds for horse betting. MVP simple web scraper for HTML with no JS.",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,6 @@
   "bugs": {
     "url": "https://github.com/Daniel57910/horse-scraper/issues"
   },
-  "homepage": "https://github.com/Daniel57910/horse-scraper#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
