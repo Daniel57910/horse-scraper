@@ -1,12 +1,9 @@
 const siteSchema = require("../models/siteSchema");
 
 class htmlSaver {
-
   saveToDatabase (parsedDataArray) {
-    let data = JSON.stringify(parsedDataArray);
-    saveStringifiedData(data);
+    saveStringifiedData(JSON.stringify(parsedDataArray));
   } 
-
 }
 
 function saveStringifiedData(dataForSaving) {

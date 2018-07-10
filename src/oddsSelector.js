@@ -4,7 +4,7 @@ class oddsSelector  {
     this.oddsData = [];
     this.oddsArray = [];
   }
-
+  
   findOdds (data, htmlClass, htmlTag) {
     this.oddsData = data(htmlClass);
     for (let i = 0; i < this.oddsData.length; i++) {

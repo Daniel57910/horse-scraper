@@ -12,7 +12,6 @@ class Scraper {
     this.allOdds = [];
   }
 
-
   addData(data) {
     this.unformattedString = data;
   }
