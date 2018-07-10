@@ -22,7 +22,7 @@ mongoose.connect(databaseSetup(env));
     })
     .then(() => {
       console.log(webScraper.savedString);
-      //databaseSaver.saveToDatabase(webScraper.savedString);
+      databaseSaver.saveToDatabase(webScraper.savedString);
     })
     .then(() => {
       webScraper.findOdds(".diff-row", "p");
