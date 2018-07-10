@@ -18,16 +18,13 @@ axios.get('https://www.oddschecker.com/grand-national/winner')
   })
   .then(() => {
     webScraper.selectHTML(".top-row", "a");
+    webScraper.findOdds(".diff-row", "p");
   })
   .then(() => {
     console.log(webScraper.savedString);
-    databaseSaver.saveToDatabase(webScraper.savedString);
+    //console.log(webScraper.allOdds)
   })
-  .then(() => {
-    webScraper.findOdds(".diff-row", "p");
-    console.log(webScraper.allOdds)
-  })
-
+ 
   function databaseSetup(env) {
     console.log(env);
     return env === 'test' ? "mongodb://localhost:27017/scraper_v1_test" : "mongodb://localhost:27017/scraper_v1";
