@@ -4,31 +4,36 @@ const oddsSelector = require('./oddsSelector.js');
 let htmlParser = new htmlSelector();
 let oddsParser = new oddsSelector();
 
-function Scraper() {
-  this.unformattedString;
-  this.formattedString;
-  this.savedString = [];
-  this.allOdds = [];
+class Scraper {
+  constructor() {
+    this.unformattedString;
+    this.formattedString;
+    this.savedString = [];
+    this.allOdds = [];
+  }
+
+
+  addData(data) {
+    this.unformattedString = data;
+  }
+
+  formatString () {
+    this.formattedString = this._loadHTML();
+  }
+
+  _loadHTML() {
+    return cheerio.load(this.unformattedString);
+  }
+
+  selectHTML (data, type) {
+    this.savedString = htmlParser.selectHTML(this.formattedString, data, type);
+  }
+
+  findOdds (data, type) {
+    this.allOdds = oddsParser.findOdds(this.formattedString, data, type);
+  }
+
 }
 
-Scraper.prototype.addData = function(data) {
-  this.unformattedString = data;
-}
-
-Scraper.prototype.formatString = function() {
-  this.formattedString = this._loadHTML();
-}
-
-Scraper.prototype._loadHTML = function() {
-  return cheerio.load(this.unformattedString);
-}
-
-Scraper.prototype.selectHTML = function(data, type) {
-  this.savedString = htmlParser.selectHTML(this.formattedString, data, type);
-}
-
-Scraper.prototype.findOdds = function(data, type) {
-  this.allOdds = oddsParser.findOdds(this.formattedString, data, type);
-}
 
 module.exports = Scraper;
