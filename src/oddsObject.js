@@ -4,3 +4,5 @@ class oddsObject {
     this.odds = horseOdds;
   }
 }
+
+module.exports = oddsObject;

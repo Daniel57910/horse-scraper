@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "jest": "^23.3.0",
-    "testdouble": "^3.8.1"
+    "testdouble": "^3.8.1",
+    "testdouble-jest": "^2.0.0"
   }
 }
