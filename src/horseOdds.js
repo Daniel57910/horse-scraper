@@ -10,8 +10,9 @@ class OddsAggregator {
 }
 
 function changeWhiteSpace(horses) {
-  return (horses.map(n => n.replace(/ /g, "_")))
+  return ( horses.map(horse => horse.replace(/ /g, "_")) )
 }
 
 
 module.exports = OddsAggregator;
+
