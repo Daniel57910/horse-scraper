@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "product will eventually scrape odds for horse betting. MVP simple web scraper for HTML with no JS.",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "mongoose": "^5.1.6"
   },
   "devDependencies": {
-    "jest": "^23.3.0"
+    "jest": "^23.3.0",
+    "testdouble": "^3.8.1"
   }
 }
