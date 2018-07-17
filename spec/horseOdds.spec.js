@@ -10,7 +10,8 @@ describe("Horse Odds", () => {
     expect(combinedOdds.allHorses[0]).toEqual("billy_the_kid");
   });
   it("combines the odds and horses into an array of odds objects", () => {
-    let testOdd = combinedOdds.compileOdds()[0];
+    testOdd = combinedOdds.compileOdds()[0]
     expect(testOdd.name).toEqual("billy_the_kid")
+    expect(testOdd.odds).toEqual([6, 4, 3, 1])
   })
 })
