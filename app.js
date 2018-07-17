@@ -25,7 +25,7 @@ axios.get('https://www.oddschecker.com/grand-national/winner')
     oddsAggregator = new horseOdds(webScraper.savedString, webScraper.allOdds)
   })
   .then(() => {
-    console.log(oddsAggregator.compileOdds())
+    databaseSaver.saveToDatabase(oddsAggregator.compileOdds())
   })
  
   function databaseSetup(env) {

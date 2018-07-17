@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 
 var siteSchema = mongoose.Schema({
-  siteData: { type: String },
+  horseName: { type: String },
+  horseOdds: { type: String },
+
 });
 
-var siteData = mongoose.model("the_horses", siteSchema);
+var siteData = mongoose.model("all_horses", siteSchema);
 module.exports = siteData;
