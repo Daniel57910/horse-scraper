@@ -3,7 +3,6 @@ class OddsAggregator {
   constructor(horses, odds) {
     this.allHorses = changeWhiteSpace(horses);
     this.allOdds = odds
-    this.compiledOdds = []
   }
 
   horseNames() {
@@ -11,11 +10,17 @@ class OddsAggregator {
   }
 
   compileOdds() {
-    for (let i = 0; i < this.allHorses.length; i++) {
-      this.compiledOdds.push(new oddsObject(this.allHorses[i], this.allOdds[i]))
-    }
-    return this.compiledOdds;
+    return createOddsObject(this.allHorses, this.allOdds)
   }
+  
+}
+
+function createOddsObject(allHorses, allOdds) {
+  let compiledOdds = []
+  for (let i in allHorses) {
+    this.compiledOdds.push(new oddsObject(allHorses[i], allOdds[i]))
+  }
+  return compiledOdds
 }
 
 
