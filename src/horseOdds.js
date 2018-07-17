@@ -1,4 +1,5 @@
 var oddsObject = require("./oddsObject")
+
 class OddsAggregator {
   constructor(horses, odds) {
     this.allHorses = changeWhiteSpace(horses);
@@ -10,15 +11,15 @@ class OddsAggregator {
   }
 
   compileOdds() {
-    return createOddsObject(this.allHorses, this.allOdds)
+    return (createOddsArray(this.allHorses, this.allOdds))
   }
   
 }
 
-function createOddsObject(allHorses, allOdds) {
+function createOddsArray(allHorses, allOdds) {
   let compiledOdds = []
-  for (let i in allHorses) {
-    this.compiledOdds.push(new oddsObject(allHorses[i], allOdds[i]))
+  for (i = 0; i < allHorses.length; i++) {
+    compiledOdds[i] = new oddsObject(allHorses[i], allOdds[i])
   }
   return compiledOdds
 }

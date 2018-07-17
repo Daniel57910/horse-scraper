@@ -2,10 +2,11 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const scraper = require('./src/scraper.js');
 const htmlSaver = require('./src/htmlSaver.js');
-
+const horseOdds = require('./src/horseOdds');
 var webScraper = new scraper();
 var databaseSaver = new htmlSaver();
 var env = process.env.NODE_ENV || "test";
+
 
 mongoose.connect(databaseSetup(env));
 
@@ -21,8 +22,10 @@ axios.get('https://www.oddschecker.com/grand-national/winner')
     webScraper.findOdds(".diff-row", "p");
   })
   .then(() => {
-    console.log(webScraper.savedString);
-    //console.log(webScraper.allOdds)
+    oddsAggregator = new horseOdds(webScraper.savedString, webScraper.allOdds)
+  })
+  .then(() => {
+    console.log(oddsAggregator.compileOdds())
   })
  
   function databaseSetup(env) {
