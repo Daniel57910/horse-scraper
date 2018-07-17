@@ -1,5 +1,4 @@
 var oddsAggregator = require("../src/horseOdds");
-jest.mock('../src/horseOdds')
 
 describe("Horse Odds", () => {
   beforeEach(() => {
@@ -8,21 +7,10 @@ describe("Horse Odds", () => {
     combinedOdds = new oddsAggregator(horses, odds);
   });
   it("first converts any white space to an underscore", () => {
-    expect(combinedOdds.horseNames()[0]).toEqual("billy_the_kid");
+    expect(combinedOdds.allHorses[0]).toEqual("billy_the_kid");
   });
-});
-
-describe("Compiling The Odds Into Horse Object", () => {
-  beforeEach(() => {
-    combinedOdds = new oddsAggregator(horses, odds);
-    combinedOdds.mockImplementation(() => {
-    return {
-      compileOdds: () => {return 100},
-      }
-    })
-  })
-  
-  it("compiles the odds into objects holding each name & odd", () => {
-    expect(combinedOdds.compileOdds()).toEqual(100)
+  it("combines the odds and horses into an array of odds objects", () => {
+    let testOdd = combinedOdds.compileOdds()[0];
+    expect(testOdd.name).toEqual("billy_the_kid")
   })
 })

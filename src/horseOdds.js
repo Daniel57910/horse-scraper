@@ -1,4 +1,4 @@
-var horseOdds
+var oddsObject = require("./oddsObject")
 
 class OddsAggregator {
   constructor(horses, odds) {
@@ -12,7 +12,7 @@ class OddsAggregator {
   }
 
   compileOdds() {
-    return 100
+    return ( this.allHorses.map(horseName => new oddsObject(horseName, 100)) )
   }
 }
 
