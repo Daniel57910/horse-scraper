@@ -7,7 +7,6 @@ var webScraper = new scraper();
 var databaseSaver = new htmlSaver();
 var env = process.env.NODE_ENV || "test";
 
-
 mongoose.connect(databaseSetup(env));
 
 axios.get('https://www.oddschecker.com/grand-national/winner')
